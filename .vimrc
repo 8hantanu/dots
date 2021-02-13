@@ -43,3 +43,9 @@ set expandtab
 set shiftwidth=2
 
 set encoding=UTF-8
+
+" Cursor fix for WSL
+let &t_SI.="\e[5 q"
+let &t_SR.="\e[4 q"
+let &t_EI.="\e[1 q"
+
