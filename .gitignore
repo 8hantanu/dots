@@ -1,0 +1,7 @@
+*
+!.bash_aliases
+!.bash_logout
+!.bashrc
+!.tmux.conf
+!.vimrc
+!.gitignore
