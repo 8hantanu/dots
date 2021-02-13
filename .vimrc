@@ -10,8 +10,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mcchrish/nnn.vim'
 Plugin 'preservim/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plugin 'ycm-core/YouCompleteMe'
+Plugin 'neoclide/coc.nvim'
+Plugin 'dart-lang/dart-vim-plugin'
+
+" Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -36,7 +40,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 set noshowmode
 
-set nu
+set number
 
 set tabstop=2
 set expandtab
