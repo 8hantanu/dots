@@ -8,14 +8,14 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'mcchrish/nnn.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plugin 'ycm-core/YouCompleteMe'
-Plugin 'neoclide/coc.nvim'
-Plugin 'dart-lang/dart-vim-plugin'
-
-" Plugin 'ryanoasis/vim-devicons'
+" Plugin 'neoclide/coc.nvim'
+" Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'regedarek/ZoomWin'
+Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -25,6 +25,13 @@ filetype plugin indent on    " required
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
+
+" Airline
+let g:airline_theme='bubblegum'
+
+" COC start
+
+" COC end
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -210,15 +217,25 @@ filetype plugin on
 set noshowmode
 
 set number
-
+set backspace=indent,eol,start
 set tabstop=2
-set expandtab
+set softtabstop=2
 set shiftwidth=2
+set expandtab
 
 set encoding=UTF-8
 
 " Cursor fix for WSL
 let &t_SI.="\e[5 q"
-let &t_SR.="\e[4 q"
+"let &t_SR.="\e[4 q"
 let &t_EI.="\e[1 q"
+
+" backspace fix
+noremap! <C-?> <C-h>
+
+" search ctags
+set tags=./tags,tags;$HOME
+
+" visual block command
+command! VB normal! <C-v>
 
