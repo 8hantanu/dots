@@ -395,6 +395,11 @@ set expandtab
 
 set encoding=UTF-8
 
+" Tmux like separators
+set fillchars+=vert:│
+hi VertSplit cterm=NONE
+" hi VertSplit ctermbg=NONE guibg=NONE
+
 " Cursor fix for WSL
 let &t_SI.="\e[5 q"
 "let &t_SR.="\e[4 q"
