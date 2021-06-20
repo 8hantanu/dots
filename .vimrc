@@ -10,15 +10,16 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'neoclide/coc.nvim'
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'regedarek/ZoomWin'
-Plugin 'ryanoasis/vim-devicons'
+Plugin 'wakatime/vim-wakatime'
 Plugin 'junegunn/goyo.vim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'wikitopian/hardmode'
+Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
