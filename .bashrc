@@ -115,5 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export DISPLAY="192.168.1.6:0"
