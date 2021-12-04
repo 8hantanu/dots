@@ -14,6 +14,7 @@ Plugin 'wakatime/vim-wakatime'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set hidden
 set noshowmode
 set number
 set backspace=indent,eol,start
@@ -23,11 +24,12 @@ set shiftwidth=2
 set expandtab
 set autochdir
 set encoding=UTF-8
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
 
 " tmux like separators
 set fillchars+=vert:\|
 hi VertSplit cterm=NONE
-" hi VertSplit ctermbg=NONE guibg=NONE
 
 " cursor fix for WSL
 let &t_SI.="\e[5 q"
@@ -58,10 +60,10 @@ map <C-w>" :new<CR>
 map <leader>vb <C-v>
 
 " minimal mode toggle
-map <leader>m :Goyo<CR>
+map <leader>min :Goyo<CR>
 
 " insert vimwiki table
-map <leader>t :VimwikiTable<CR>
+map <leader>tbl :VimwikiTable<CR>
 
 " vimwiki config
 if filereadable('/home/i8hantanu/.me_dev')
