@@ -62,9 +62,9 @@ map <leader>m :Goyo<CR>
 map <leader>t :VimwikiTable<CR>
 
 " vimwiki config
-let dev_wiki = {}
-let dev_wiki.path = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/wiki'
-let dev_wiki.path_html = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/docs'
-let dev_wiki.syntax = 'default'
-let dev_wiki.ext = '.md'
-let g:vimwiki_list = [dev_wiki]
+let work_wiki = {}
+let work_wiki.path = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/wiki'
+let work_wiki.path_html = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/docs'
+let work_wiki.syntax = 'default'
+let work_wiki.ext = '.md'
+let g:vimwiki_list = [work_wiki]
