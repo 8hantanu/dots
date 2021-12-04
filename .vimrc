@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+syntax on
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -58,13 +59,24 @@ map <leader>vb <C-v>
 " minimal mode toggle
 map <leader>m :Goyo<CR>
 
-" insert vimwiki table 
+" insert vimwiki table
 map <leader>t :VimwikiTable<CR>
 
 " vimwiki config
-let work_wiki = {}
-let work_wiki.path = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/wiki'
-let work_wiki.path_html = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/docs'
-let work_wiki.syntax = 'default'
-let work_wiki.ext = '.md'
-let g:vimwiki_list = [work_wiki]
+if filereadable('/home/i8hantanu/.me_dev')
+  let me_wiki = {}
+  let me_wiki.path = '~/blog/wiki'
+  let me_wiki.path_html = '~/blog/docs'
+  let me_wiki.syntax = 'default'
+  let me_wiki.ext = '.md'
+  let g:vimwiki_list = [me_wiki]
+endif
+
+if filereadable('~/.work_dev')
+  let work_wiki = {}
+  let work_wiki.path = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/wiki'
+  let work_wiki.path_html = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/docs'
+  let work_wiki.syntax = 'default'
+  let work_wiki.ext = '.md'
+  let g:vimwiki_list = [work_wiki]
+endif
