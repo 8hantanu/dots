@@ -69,9 +69,12 @@ map <leader>tbl :VimwikiTable<CR>
 if filereadable('/home/i8hantanu/.me_dev')
   let me_wiki = {}
   let me_wiki.path = '~/blog/wiki'
-  let me_wiki.path_html = '~/blog/docs'
+  let me_wiki.path_html = '~/blog/site'
   let me_wiki.syntax = 'default'
   let me_wiki.ext = '.md'
+  let me_wiki.template_path = '~/blog/html'
+  let me_wiki.template_default = 'default'
+  let me_wiki.template_ext ='.html'
   let g:vimwiki_list = [me_wiki]
 endif
 
