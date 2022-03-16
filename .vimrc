@@ -8,8 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-vinegar'
-Plugin 'vimwiki/vimwiki'
-Plugin 'mattn/calendar-vim'
 Plugin 'wakatime/vim-wakatime'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -61,28 +59,3 @@ map <leader>vb <C-v>
 
 " minimal mode toggle
 map <leader>min :Goyo<CR>
-
-" insert vimwiki table
-map <leader>tbl :VimwikiTable<CR>
-
-" vimwiki config
-if filereadable('/home/i8hantanu/.me_dev')
-  let me_wiki = {}
-  let me_wiki.path = '~/blog/wiki'
-  let me_wiki.path_html = '~/blog/site'
-  let me_wiki.syntax = 'default'
-  let me_wiki.ext = '.md'
-  let me_wiki.template_path = '~/blog/html'
-  let me_wiki.template_default = 'default'
-  let me_wiki.template_ext ='.html'
-  let g:vimwiki_list = [me_wiki]
-endif
-
-if filereadable('~/.work_dev')
-  let work_wiki = {}
-  let work_wiki.path = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/wiki'
-  let work_wiki.path_html = '/proj/xhdhdstaff2/shmishra/projects/git/dev_log/docs'
-  let work_wiki.syntax = 'default'
-  let work_wiki.ext = '.md'
-  let g:vimwiki_list = [work_wiki]
-endif
