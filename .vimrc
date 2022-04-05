@@ -1,7 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-syntax on
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,21 +5,31 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'wakatime/vim-wakatime'
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()                 " required
 
-set hidden
+" Enabling filetype support provides filetype-specific indenting,
+" syntax highlighting, omni-completion and other useful settings.
+filetype plugin indent on         " required
+syntax on
+
+set hidden                        " Possibility to have more than one unsaved buffers.
 set noshowmode
 set number
-set backspace=indent,eol,start
+set incsearch                     " Incremental search, hit `<CR>` to stop.
+set ruler                         " Shows the current line number at the bottom-right
+                                  " of the screen.
+set backspace=indent,eol,start    " Intuitive backspace behavior.
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autochdir
+set autoindent
 set encoding=UTF-8
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
+set wildmenu                      " Great command-line completion, use `<Tab>` to move
+                                  " around and `<CR>` to validate.
 
 " tmux like separators
 set fillchars+=vert:\|
@@ -53,7 +59,7 @@ set tags=./tags,tags;$HOME
 map <C-w>% :vnew<CR>
 map <C-w>" :new<CR>
 
-" visual block command map
+" visual block command remap
 " since <C-v> used for paste from windows clipboard
 map <leader>vb <C-v>
 
