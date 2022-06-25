@@ -1,16 +1,22 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'tpope/vim-vinegar'
-Plugin 'wakatime/vim-wakatime'
-call vundle#end()                 " required
-
-" Enabling filetype support provides filetype-specific indenting,
-" syntax highlighting, omni-completion and other useful settings.
-filetype plugin indent on         " required
+set nocompatible                  " be iMproved, required
+filetype off                      " required
 syntax on
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+    Plug 'tpope/vim-vinegar'
+    Plug 'preservim/tagbar'
+    Plug 'junegunn/goyo.vim'
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'github/copilot.vim'
+endif
+call plug#end()
 
 set hidden                        " Possibility to have more than one unsaved buffers.
 set noshowmode
@@ -19,9 +25,9 @@ set incsearch                     " Incremental search, hit `<CR>` to stop.
 set ruler                         " Shows the current line number at the bottom-right
                                   " of the screen.
 set backspace=indent,eol,start    " Intuitive backspace behavior.
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set autochdir
 set autoindent
