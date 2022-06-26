@@ -71,3 +71,9 @@ map <leader>vb <C-v>
 
 " minimal mode toggle
 map <leader>min :Goyo<CR>
+
+if has('nvim')
+    " Better contrast with light themes
+    set background=light
+endif
+
