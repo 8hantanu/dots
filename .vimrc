@@ -65,6 +65,10 @@ set tags=./tags,tags;$HOME
 map <C-w>% :vnew<CR>
 map <C-w>" :new<CR>
 
+" tmux like zoom
+noremap <c-w>Z <c-w>_ \| <c-w>\|
+noremap <c-w>z <c-w>=
+
 " visual block command remap
 " since <C-v> used for paste from windows clipboard
 map <leader>vb <C-v>
