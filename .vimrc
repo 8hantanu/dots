@@ -10,10 +10,13 @@ endif
 
 call plug#begin()
     Plug 'tpope/vim-vinegar'
-    Plug 'preservim/tagbar'
     Plug 'junegunn/goyo.vim'
+    Plug 'wellle/context.vim'
+    Plug '8hantanu/tabline.vim'
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
     Plug 'github/copilot.vim'
 endif
 call plug#end()
@@ -73,11 +76,30 @@ noremap <c-w>z <c-w>=
 " since <C-v> used for paste from windows clipboard
 map <leader>vb <C-v>
 
-" minimal mode toggle
-map <leader>min :Goyo<CR>
+" context toggle
+map <leader>ct :ContextToggle<CR>
+let s:contect_buffer_name = ''
 
+" netrw - vim file explorer
+"" tree file format (toggle using `i`)
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+"" toggle hide dot files (`gh`)
+let ghregex='\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_list_hide=ghregex
+
+" nvim specific
 if has('nvim')
-    " Better contrast with light themes
-    set background=light
+
+    " Find files using Telescope command-line
+    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+    nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
+
+    " Enable clangd lsp
+    lua require'lspconfig'.clangd.setup{}
+
 endif
 
