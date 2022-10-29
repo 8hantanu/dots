@@ -12,11 +12,11 @@ call plug#begin()
     Plug 'tpope/vim-vinegar'
     Plug 'junegunn/goyo.vim'
     Plug 'wellle/context.vim'
-    Plug '8hantanu/tabline.vim'
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'simrat39/rust-tools.nvim'
     Plug 'github/copilot.vim'
 endif
 call plug#end()
@@ -24,6 +24,7 @@ call plug#end()
 set hidden                        " Possibility to have more than one unsaved buffers.
 set noshowmode
 set number
+set nowrap
 set incsearch                     " Incremental search, hit `<CR>` to stop.
 set ruler                         " Shows the current line number at the bottom-right
                                   " of the screen.
@@ -91,15 +92,33 @@ let g:netrw_list_hide=ghregex
 " nvim specific
 if has('nvim')
 
-    " Find files using Telescope command-line
-    nnoremap <leader>ff <cmd>Telescope find_files<cr>
-    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-    nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-    nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
+" Find files using Telescope command-line
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 
-    " Enable clangd lsp
-    lua require'lspconfig'.clangd.setup{}
+" Enable clangd lsp
+lua require'lspconfig'.clangd.setup{}
+
+" Enable rust-tools
+lua << EOF
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+EOF
 
 endif
 
