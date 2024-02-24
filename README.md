@@ -1,6 +1,6 @@
 # dots
 
-**Centralize and sync configurations.**
+**Dotfiles Organize, Transfer & Sync**
 
 ## Usage
 
