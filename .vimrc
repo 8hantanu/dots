@@ -42,7 +42,7 @@ set wildmenu                      " Great command-line completion, use `<Tab>` t
                                   " around and `<CR>` to validate.
 
 " tmux like separators
-set fillchars+=vert:\|
+set fillchars+=vert:│
 hi VertSplit cterm=NONE
 
 " cursor fix for WSL
