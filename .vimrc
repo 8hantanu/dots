@@ -21,78 +21,43 @@ if has('nvim')
 endif
 call plug#end()
 
-set hidden                        " Possibility to have more than one unsaved buffers.
-set noshowmode
-set number
-set nowrap
-set incsearch                     " Incremental search, hit `<CR>` to stop.
-set ruler                         " Shows the current line number at the bottom-right
-                                  " of the screen.
-set backspace=indent,eol,start    " Intuitive backspace behavior.
+set hidden                          " View other buffers without saving current buffer
+set noshowmode                      " Hide current vim mode
+set number                          " Show line numbers
+set nowrap                          " Dont wrap lines
+set incsearch                       " Start search without hitting `<CR>`
+set ruler                           " Current line number at the bottom-right of screen
+set expandtab
+set autochdir                       " Change to directory of current file
+set autoindent
+set wildmenu                        " Command completion menu
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
+set encoding=UTF-8
+set fillchars+=vert:│               " Tmux like vertical separators
+set backspace=indent,eol,start      " Intuitive backspace behavior
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
-set autochdir
-set autoindent
-set encoding=UTF-8
-set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
-set wildmenu                      " Great command-line completion, use `<Tab>` to move
-                                  " around and `<CR>` to validate.
 
-" tmux like separators
-set fillchars+=vert:│
-hi VertSplit cterm=NONE
+" Enable markdown syntax for md files
+au BufNewFile,BufFilePre,BufEnter,BufRead *.md set filetype=markdown
 
-" cursor fix for WSL
-let &t_SI.="\e[5 q"
-"let &t_SR.="\e[4 q"
-let &t_EI.="\e[1 q"
-
-" backspace fix in some shells
-noremap! <C-?> <C-h>
-
-" move around in insert
-inoremap <A-k> <C-o>gk
-inoremap <A-h> <Left>
-inoremap <A-l> <Right>
-inoremap <A-j> <C-o>gj
-
-" enable markdown syntax for md files
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-
-" search ctags
+" Search ctags
 set tags=./tags,tags;$HOME
 
-" tmux like splits
+" Tmux like splits
 map <C-w>% :vnew<CR>
 map <C-w>" :new<CR>
 
-" tmux like zoom
-noremap <c-w>Z <c-w>_ \| <c-w>\|
-noremap <c-w>z <c-w>=
+" Tmux like zoom
+noremap <c-w>z <c-w>_ \| <c-w>\|
 
-" visual block command remap
-" since <C-v> used for paste from windows clipboard
-map <leader>vb <C-v>
-
-" context toggle
-map <leader>ct :ContextToggle<CR>
-let s:contect_buffer_name = ''
-
-" netrw - vim file explorer
-"" tree file format (toggle using `i`)
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-"" toggle hide dot files (`gh`)
-let ghregex='\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_list_hide=ghregex
-
-" nvim specific
+" Specific to nvim
 if has('nvim')
 
-" Find files using Telescope command-line
+" Telescope utils
+nnoremap <leader>ft <cmd>Telescope <cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
