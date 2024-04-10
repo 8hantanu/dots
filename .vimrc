@@ -34,24 +34,43 @@ set wildmenu                        " Command completion menu
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
 set encoding=UTF-8
-set fillchars+=vert:│               " Tmux like vertical separators
 set backspace=indent,eol,start      " Intuitive backspace behavior
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" Enable markdown syntax for md files
-au BufNewFile,BufFilePre,BufEnter,BufRead *.md set filetype=markdown
-
 " Search ctags
 set tags=./tags,tags;$HOME
 
-" Tmux like splits
+" Tmux like UX
+set fillchars+=vert:│               " Tmux like vertical separators
 map <C-w>% :vnew<CR>
 map <C-w>" :new<CR>
-
-" Tmux like zoom
 noremap <c-w>z <c-w>_ \| <c-w>\|
+
+" Markdown settings
+au BufNewFile,BufFilePre,BufEnter,BufRead *.md
+  \ setlocal filetype=markdown |
+  \ setlocal wrap nonumber textwidth=64 |
+  \ setlocal tabstop=4 softtabstop=4 shiftwidth=4
+
+augroup MarkdownMapping
+  autocmd!
+  autocmd FileType markdown nnoremap <buffer> gf :call GoToNote()<CR>
+augroup END
+
+function! GoToNote()
+  let base_path = expand("%:p:h") . '/' . expand("<cfile>")
+  let extensions = ['', '.md', '/README.md']
+  for ext in extensions
+    let path = base_path . ext
+    if filereadable(path)
+      execute "edit " . path
+      return
+    endif
+  endfor
+  echohl ErrorMsg | echo "Can't find note \"" . expand("<cfile>") . "\" in path" | echohl None
+endfunction
 
 " Specific to nvim
 if has('nvim')
