@@ -12,10 +12,12 @@ call plug#begin()
     Plug 'tpope/vim-vinegar'
     Plug 'junegunn/goyo.vim'
     Plug 'wellle/context.vim'
+    Plug 'dhruvasagar/vim-table-mode'
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-symbols.nvim'
     Plug 'simrat39/rust-tools.nvim'
     Plug 'github/copilot.vim'
 endif
@@ -28,7 +30,6 @@ set nowrap                          " Dont wrap lines
 set incsearch                       " Start search without hitting `<CR>`
 set ruler                           " Current line number at the bottom-right of screen
 set expandtab
-set autochdir                       " Change to directory of current file
 set autoindent
 set wildmenu                        " Command completion menu
 set list
@@ -47,6 +48,9 @@ set fillchars+=vert:│               " Tmux like vertical separators
 map <C-w>% :vnew<CR>
 map <C-w>" :new<CR>
 noremap <c-w>z <c-w>_ \| <c-w>\|
+
+" clear whitespace in line endings
+nnoremap <leader>clw :%s/\s\+$//g<CR>
 
 " Markdown settings
 au BufNewFile,BufFilePre,BufEnter,BufRead *.md
