@@ -1,0 +1,10 @@
+title: dots
+author: Shantanu Mishra
+email: dev@8hantanu.net
+description: >
+  Dotfiles Organize, Transfer & Sync
+
+url: https://8hantanu.net
+baseurl: /dots
+
+remote_theme: yree/mold
