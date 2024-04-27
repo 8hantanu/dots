@@ -1,8 +1,8 @@
-# dots
+# dots ⚙️
 
-**Dotfiles Organize, Transfer & Sync**
+**D**otfiles **O**rganize, **T**ransfer & **S**ync** 
 
-## Usage
+## Setup 🏗️ 
 
 Recommended to use with [GNU stow](https://www.gnu.org/software/stow/).
 
@@ -31,20 +31,18 @@ Recommended to use with [GNU stow](https://www.gnu.org/software/stow/).
    stow .
    ```
    
-## Config files
+## Configs 🛠️
 
 The repo has following configs:
 - `.vimrc` - vim config
 - `.tmux.conf` - tmux configuration file.
 
-## Feedback
+## Feedback 📝
 
 Any ideas, suggestions, or feedback regarding dots, please feel free to open an issue on the repository.
 
 Also share any config tips/tricks.
 
-## License
+## License 📜
 
 Open-source licensed under the MIT license.
-
-
