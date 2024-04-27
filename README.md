@@ -1,6 +1,6 @@
 # dots ⚙️
 
-**D**otfiles **O**rganize, **T**ransfer & **S**ync** 
+**D**otfiles **O**rganize, **T**ransfer & **S**ync
 
 ## Setup 🏗️ 
 
@@ -30,7 +30,7 @@ Recommended to use with [GNU stow](https://www.gnu.org/software/stow/).
    ```bash
    stow .
    ```
-   
+
 ## Configs 🛠️
 
 The repo has following configs:
@@ -43,6 +43,6 @@ Any ideas, suggestions, or feedback regarding dots, please feel free to open an 
 
 Also share any config tips/tricks.
 
-## License 📜
+## License 📃
 
 Open-source licensed under the MIT license.
