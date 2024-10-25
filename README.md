@@ -31,7 +31,7 @@ Recommended to use with [GNU stow](https://www.gnu.org/software/stow/).
    stow .
    ```
 
-## Configs 🛠️
+## Includes 📦
 
 The repo has following configs:
 - `.vimrc` - vim config
