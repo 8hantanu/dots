@@ -88,24 +88,20 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 
 " Enable clangd lsp
-lua require'lspconfig'.clangd.setup{}
-
-" Enable rust-tools
 lua << EOF
+vim.lsp.config('clangd', {})
+vim.lsp.enable('clangd')
+EOF
 
-local rt = require("rust-tools")
-
-rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
-  },
+" Enable rust-analyzer lsp
+lua << EOF
+vim.lsp.config('rust_analyzer', {
+  on_attach = function(client, bufnr)
+    vim.keymap.set("n", "<C-space>", vim.lsp.buf.hover, { buffer = bufnr })
+    vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, { buffer = bufnr })
+  end,
 })
-
+vim.lsp.enable('rust_analyzer')
 EOF
 
 endif
