@@ -7,4 +7,6 @@ description: >
 url: https://8hantanu.net
 baseurl: /dots
 
+git_repo: 8hantanu/dots
+
 remote_theme: yree/mold
